@@ -9,16 +9,11 @@ import { TrendingCoinsFallback } from './fallback';
 const TrendingCoins = async () => {
   let trendingCoins;
   try {
-    trendingCoins = await fetcher<{ coins: TrendingCoin[] }>(
-      '/search/trending',
-      undefined,
-      300
-    );
+    trendingCoins = await fetcher<{ coins: TrendingCoin[] }>('search/trending', undefined, 300);
   } catch (error) {
     console.error('Error fetching trending coins:', error);
     return <TrendingCoinsFallback />;
   }
-  
 
   const columns: DataTableColumn<TrendingCoin>[] = [
     {
@@ -68,9 +63,9 @@ const TrendingCoins = async () => {
           columns={columns}
           data={trendingCoins.coins.slice(0, 6) || []}
           rowKey={(coin, index) => coin.item.id}
-          tableClassName='trending-coins-table'
-          headerCellClassName='py-3!'
-          bodyCellClassName='py-2!'
+          tableClassName="trending-coins-table"
+          headerCellClassName="py-3!"
+          bodyCellClassName="py-2!"
         />
       </div>
     </div>
