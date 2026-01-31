@@ -60,7 +60,7 @@ const SearchItem = ({ coin, onSelect, isActiveName }: SearchItemProps) => {
 }
 
 
-const SearchModal = ({ initialTrendingCoins = [] }: { initialTrendingCoins: TrendingCoin[] }) => {
+const SearchModal = ({ initialTrendingCoins = [] }: { initialTrendingCoins?: TrendingCoin[] }) => {
 
     const router = useRouter();
     const [ searchQuery, setSearchQuery ] = useState('');
