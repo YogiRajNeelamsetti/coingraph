@@ -10,8 +10,7 @@ const Converter = ({ symbol, icon, priceList }:ConverterProps) => {
     const [currency, setCurrency] = useState<string>('usd')
     const [amount, setAmount] = useState<string>('10')
 
-    const convertedPrice = (parseFloat(amount) || 0) * (priceList[currency] || 0)
-
+    const convertedPrice = (parseFloat(amount) || 0) * (priceList[currency] || 0);
 
 
     return (
