@@ -9,6 +9,15 @@ if(!BASE_URL) throw new Error('Could not get base url');
 if(!API_KEY) throw new Error('Could not get api key');
 
 
+/**
+ * Fetches JSON from the configured API by building a full URL from a relative endpoint and optional query params.
+ *
+ * @param endpoint - Relative API path (appended to the configured base URL).
+ * @param params - Optional query parameters to include in the request; empty strings and nulls are omitted.
+ * @param revalidate - Cache revalidation hint in seconds for the request.
+ * @returns The parsed JSON response typed as `T`.
+ * @throws Error when the response has a non-OK HTTP status; the error message includes the status code and any error text returned by the API.
+ */
 export async function fetcher<T>(
     endpoint: string,
     params?: QueryParams,
@@ -36,6 +45,14 @@ export async function fetcher<T>(
     return response.json();
 }
 
+/**
+ * Retrieve pool metadata for a token, using network+contractAddress when provided or falling back to a search by `id`.
+ *
+ * @param id - Token identifier or search query used when network and contractAddress are not both provided
+ * @param network - Optional blockchain network identifier to scope the lookup
+ * @param contractAddress - Optional token contract address to scope the lookup
+ * @returns The first matched `PoolData` when available; otherwise returns a fallback `PoolData` with empty fields (also returned on lookup errors)
+ */
 export async function getPools(
   id: string,
   network?: string | null,
