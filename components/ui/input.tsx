@@ -2,6 +2,13 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * Render a styled input element that composes utility classes and forwards remaining input props.
+ *
+ * @param className - Additional CSS classes appended to the component's generated class list
+ * @param type - Value for the input `type` attribute (e.g., "text", "password")
+ * @returns A JSX `<input>` element with composed classes, `data-slot="input"`, and all remaining props forwarded
+ */
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   return (
     <input

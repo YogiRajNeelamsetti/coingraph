@@ -26,6 +26,13 @@ const badgeVariants = cva(
   }
 )
 
+/**
+ * Render a styled badge element with selectable visual variants.
+ *
+ * @param variant - Visual style of the badge; one of "default", "secondary", "destructive", "outline", "ghost", or "link"
+ * @param asChild - If true, render the badge using a provided child element (Slot) instead of a native `span`
+ * @returns A React element representing the badge with the chosen variant's styles applied
+ */
 function Badge({
   className,
   variant = "default",
